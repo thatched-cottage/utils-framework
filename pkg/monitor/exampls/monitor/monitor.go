@@ -2,8 +2,8 @@ package monitor
 
 import (
 	"context"
+	"gitee.com/wuxiansheng/utils-framework/pkg/log"
 	"gitee.com/wuxiansheng/utils-framework/pkg/monitor/monitor"
-	"log"
 	"time"
 )
 
@@ -12,7 +12,7 @@ func Init() {
 }
 
 func OutStringHook(s string) {
-	log.Print(s)
+	log.Debugf(s)
 }
 
 func TimeCost(ctx context.Context) func() {
