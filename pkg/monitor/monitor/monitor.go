@@ -15,7 +15,7 @@ type Monitor struct {
 var (
 	tick *time.Ticker
 	m    sync.Map
-	buf  string
+	buf  []string
 )
 
 func mRangeCallBack(key, value any) bool {
@@ -27,7 +27,7 @@ func mRangeCallBack(key, value any) bool {
 		for _, v := range sss {
 			totalTime += v.(time.Duration)
 		}
-		buf += fmt.Sprintf(`[%s] runs for %d times, with an average running time of %v.\n`, key, ssCount, totalTime/time.Duration(ssCount))
+		buf = append(buf, fmt.Sprintf(`[%s] runs for %d times, with an average running time of %v.`, key, ssCount, totalTime/time.Duration(ssCount)))
 	}
 	return true
 }
@@ -45,8 +45,10 @@ func Run() {
 			case <-tick.C:
 				m.Range(mRangeCallBack)
 				if len(buf) > 0 {
-					tccb(buf)
-					buf = ``
+					for _, v := range buf {
+						tccb(v)
+					}
+					buf = buf[:0]
 				}
 			}
 		}
