@@ -8,6 +8,6 @@ import (
 
 func init() {
 	go func() {
-		log.Error(http.ListenAndServe(":6060", nil))
+		log.Error(http.ListenAndServe(":7070", nil))
 	}()
 }
