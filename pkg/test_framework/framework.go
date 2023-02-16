@@ -1,7 +1,7 @@
 package test_framework
 
 import (
-	"gitee.com/wuxiansheng/utils-framework/pkg/log"
+	"github.com/thatched-cottage/utils-framework/pkg/log"
 	"runtime/debug"
 )
 

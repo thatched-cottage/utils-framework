@@ -1,7 +1,7 @@
 package pprof
 
 import (
-	"gitee.com/wuxiansheng/utils-framework/pkg/log"
+	"github.com/thatched-cottage/utils-framework/pkg/log"
 	"net/http"
 	_ "net/http/pprof"
 )

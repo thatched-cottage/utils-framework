@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"gitee.com/wuxiansheng/utils-framework/pkg/monitor/exampls/monitor"
+	"github.com/thatched-cottage/utils-framework/pkg/monitor/exampls/monitor"
 	"testing"
 	"time"
 )
