@@ -3,12 +3,12 @@
 package errors
 
 import (
-	"bitbucket.org/funplus/sandwich-plugins/driver/abtest/errors/codes"
-	spb "bitbucket.org/funplus/sandwich-plugins/driver/abtest/errors/internal/pb"
-	"bitbucket.org/funplus/sandwich-plugins/driver/abtest/errors/internal/status"
 	"context"
 	"errors"
 	"fmt"
+	"github.com/thatched-cottage/utils-framework/pkg/errors/codes"
+	spb "github.com/thatched-cottage/utils-framework/pkg/errors/internal/pb"
+	"github.com/thatched-cottage/utils-framework/pkg/errors/internal/status"
 )
 
 // Status references google.golang.org/grpc/internal/status. It represents an

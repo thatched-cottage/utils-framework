@@ -3,12 +3,12 @@
 package status
 
 import (
-	"bitbucket.org/funplus/sandwich-plugins/driver/abtest/errors/codes"
-	spb "bitbucket.org/funplus/sandwich-plugins/driver/abtest/errors/internal/pb"
 	"errors"
 	"fmt"
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes"
+	"github.com/thatched-cottage/utils-framework/pkg/errors/codes"
+	spb "github.com/thatched-cottage/utils-framework/pkg/errors/internal/pb"
 )
 
 // Status represents an RPC status code, message, and details.  It is immutable
