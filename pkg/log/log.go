@@ -26,6 +26,12 @@ func WithFileOut(logFile string) Option {
 	}
 }
 
+func WithRotatingFileWriter(logFilePath, logFileName string) Option {
+	return func(cfg *ConfigOption) {
+		cfg.Out = NewRotatingFileWriter(logFilePath, logFileName)
+	}
+}
+
 // Init 替换以将日志输出到文件
 func Init(opts ...Option) error {
 	cfg := &ConfigOption{
