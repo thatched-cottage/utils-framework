@@ -2,13 +2,42 @@ package log
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"runtime"
 )
 
-func Init() {
-	logSingleton.Logger = log.New(os.Stdout, "Test:", log.LstdFlags)
+// Option 使用函数定义一个配置选项类型
+type Option func(*ConfigOption)
+
+// ConfigOption 持有可选参数
+type ConfigOption struct {
+	Out io.Writer
+}
+
+func WithFileOut(logFile string) Option {
+	return func(cfg *ConfigOption) {
+		out, err := os.OpenFile(logFile, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+		if err != nil {
+			log.Fatalf("failed to open log file: %v", err)
+		}
+		cfg.Out = out
+	}
+}
+
+// Init 替换以将日志输出到文件
+func Init(opts ...Option) error {
+	cfg := &ConfigOption{
+		Out: os.Stdout,
+	}
+
+	// 应用每个Option函数来设置配置
+	for _, opt := range opts {
+		opt(cfg)
+	}
+	logSingleton.Logger = log.New(cfg.Out, "Text:", log.LstdFlags)
+	return nil
 }
 
 var logSingleton ServiceProviderLogger
