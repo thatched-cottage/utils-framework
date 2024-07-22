@@ -6,8 +6,8 @@ import (
 
 	"github.com/golang/protobuf/proto"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/interop/grpc_testing"
 	"google.golang.org/grpc/status"
-	"google.golang.org/grpc/test/grpc_testing"
 )
 
 func errWithDetails(t *testing.T, s *status.Status, details ...proto.Message) error {
